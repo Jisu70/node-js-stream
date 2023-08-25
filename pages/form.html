@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #copyButton {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+
+      #textToCopy {
+        font-size: 16px;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <form method="post" action="/send-data" type="submit">
+      <input name="input" placeholder="input text" />
+    </form>
+    <h2>Copy this below Text and paste it in the chat box and hit enter</h2>
+    <p id="textToCopy">
+      <button id="copyButton">Copy</button>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras suscipit
+      porta lacus id pulvinar. Praesent suscipit bibendum neque, nec dictum ex
+      maximus nec. Pellentesque arcu lorem, scelerisque sit amet sodales nec,
+      lacinia scelerisque dui. Vivamus non magna nulla. Morbi id porttitor diam,
+      vitae pharetra est. Nullam vulputate lacinia diam, vel suscipit diam
+      rutrum nec. Nullam est enim, lacinia sed porttitor ut, volutpat sed urna.
+      Praesent tempor arcu nec scelerisque euismod. Suspendisse nibh libero,
+      vehicula eu neque eget, condimentum vulputate est. Praesent lacus massa,
+      aliquet id congue ut, scelerisque sed diam. Cras facilisis metus in massa
+      vulputate blandit. Quisque lectus urna, facilisis sit amet mattis eget,
+      maximus id nulla. Donec vitae tempor velit, id lacinia felis. Fusce
+      facilisis urna ut mattis venenatis. Fusce nec neque sagittis, facilisis
+      libero in, ultrices nibh. Sed justo ipsum, fringilla vitae cursus sed,
+      ultricies vitae quam. Maecenas sem tortor, egestas eget hendrerit nec,
+      facilisis sodales lacus. Aenean ultricies elementum imperdiet. In blandit
+      vehicula gravida. Vestibulum tempor odio mollis tellus tincidunt
+      vestibulum. Etiam a erat vel justo interdum tincidunt in ac ipsum.
+      Vestibulum aliquet scelerisque tellus. Donec eu volutpat nulla, eget
+      sagittis risus. Cras ullamcorper, augue quis maximus efficitur, mauris mi
+      blandit dolor, et ornare quam leo vitae nisi. Nullam felis risus,
+      ultricies vitae posuere nec, rutrum ac mi. Etiam porttitor varius felis
+      quis sollicitudin. Vestibulum volutpat finibus risus, vel pellentesque
+      lorem sagittis quis. Sed viverra nisl eget turpis facilisis, at pharetra
+      urna bibendum. Curabitur posuere maximus massa, non porta ligula molestie
+      eu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+      posuere cubilia curae; Vivamus feugiat congue tincidunt. Maecenas ac eros
+      porta, dapibus diam volutpat, dignissim turpis. Maecenas nec dictum metus.
+      Etiam in euismod nulla. Phasellus dolor lacus, tempus eget viverra ut,
+      laoreet at augue. Integer pretium rutrum massa, in pulvinar lectus
+      vehicula non. Morbi mauris quam, ornare ut neque sed, tempus tristique
+      magna. Nam faucibus sit amet arcu iaculis ullamcorper. Etiam consectetur
+      magna non tellus lacinia maximus. Sed vitae mauris id lectus sodales
+      fermentum vel non est. Pellentesque pellentesque consectetur libero,
+      blandit dictum tellus varius vel. Donec ut mauris lacus. Proin ut turpis
+      non magna condimentum vulputate. Mauris lacinia placerat nisi consequat
+      dapibus. Vivamus iaculis pulvinar finibus. Integer interdum elementum
+      erat, eget egestas lacus gravida eget.
+    </p>
+    <script>
+      let button = document.getElementById('copyButton');
+      let textToCopy = document.getElementById('textToCopy').textContent;
+
+      button.addEventListener('click', () => {
+        let textarea = document.createElement('textarea');
+        textarea.value = textToCopy;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+
+        button.textContent = 'Copied!';
+        setTimeout(function () {
+          button.textContent = 'Copy';
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>
